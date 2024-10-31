@@ -26,7 +26,7 @@ En el siguiente enlace a continuación se muestra detalladamente como está hech
 
 https://github.com/marcosz-96/Proyecto_Sistemas_Operativos1.git
 
-MIT Licence [2024] [Proyecto Sistemas Operativos]
+Tipo de licencia: MIT Licence [2024]
 
 
 **_Integrantes: Llera Tomás, Courel Brian y Gomez Marco._**
