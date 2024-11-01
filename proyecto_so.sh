@@ -65,10 +65,10 @@ limpiar_cache_y_archivos_temp(){
     echo "Empezando limpieza de navagadores..."
 
     limpiar_navegadores(){
-        navegador =$1
-        ruta_cache =$2
-        echo "limpiando navegador $navegador"
-        if [-d "$ruta_cache"]; then
+        navegador=$1
+        ruta_cache=$2
+        echo "limpiando navegador $navegador..."
+        if [ -d "$ruta_cache" ]; then
             rm -rf "$ruta_cache"
             echo "Caché del navegador $navegador eliminado."
         else 
@@ -76,7 +76,6 @@ limpiar_cache_y_archivos_temp(){
         fi
     }
 
-echo "Empezando limpieza de navegadores"
 limpiar_navegadores "FireFox" "$HOME/.cache/mozilla/firefox"
 limpiar_navegadores "Google Chrome" "$HOME/.cache/google-chrome"
 echo "Limpieza completada con éxito."
