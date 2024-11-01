@@ -30,11 +30,10 @@ generar_informes(){
     #Enviamos mensaje de confirmación de informes hechos.
     echo "Informes generados y guardados exitosamente en \"$archivo_log\"."
     echo "--------------------------------------------------------------"
-    echo "Para poder ver el listado de informe, por favor
-    escriba lo siguiente:
+    echo "Para poder ver el listado de informe, por favor, ingrese lo siguiente:"
     echo "'ls -l informes_*.log'"
     echo "--------------------------------------------------------------"
-    echo "Si desea ver el informe generado, escriba lo siguiente:
+    echo "Si desea ver el informe generado, escriba lo siguiente:"
     echo "'cat\"$archivo_log\"'"
 }
 
@@ -102,25 +101,17 @@ actualizar_sistema(){
         fi
 }
 
-#4ta Función: Definición de colores
-RED ='\033[0;31m'
-GREEN ='\033[0;32m'
-YELLOW ='\033[0;33m'
-BLUE ='\033[0;34m'
-NC  ='\033[0m' # Sin Color
-
-
-#5ta Función: Menú Interactivo
+#4ta Función: Menú Interactivo
 while true; do
-    echo -e"${BLUE}-----------------------------------------------------------------${NC}"
-    echo -e"${YELLOW}Bienvenido al menú de opciones${NC}"
-    echo -e"${BLUE}A continuación te presentamos las siguienbtes opciones para que puedas:${NC}"
-    echo "-------------------------------------------------------------------------------"
-    echo -e"${GREEN}1.${NC} Generar un informe de uso de CPU, memoria y disco."
-    echo -e"${GREEN}2.${NC} Verificar y actualizar en sistema."
-    echo -e"${GREEN}3.${NC} Realizar una limpieza de archivos temporales y caché."
-    echo -e"${GREEN}4.${NC} Finalizar el programa."
-    echo -e"${BLUE}-------------------------------------------------------------------${NC}"
+    echo "-------------------------------------------------------------------------"
+    echo "===>Bienvenido al menú de opciones<==="
+    echo "¡A continuación te presentamos las siguienbtes opciones para que puedas!:"
+    echo "-------------------------------------------------------------------------"
+    echo "1. Generar un informe de uso de CPU, memoria y disco."
+    echo "2. Verificar y actualizar en sistema."
+    echo "3. Realizar una limpieza de archivos temporales y caché."
+    echo "4. Finalizar el programa."
+    echo "-------------------------------------------------------------------------"
     read -p "Elija una opción: " opcion
 
     case $opcion in
@@ -134,11 +125,11 @@ while true; do
         limpiar_cache_y_archivos_temp 
         ;;
     4) 
-        echo -e"${GREEN}Gracias por utilizar el menú de opciones${NC}"  
+        echo "Gracias por utilizar el menú de opciones"  
         break #Sale del bucle
         ;;
     *)
-        echo -e"${RED}Opción no válida, por favor elija una opción válida${NC}"
+        echo "Opción no válida, por favor elija una opción válida"
         ;;
     esac
 done
