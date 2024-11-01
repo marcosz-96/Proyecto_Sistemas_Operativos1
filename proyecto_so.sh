@@ -14,26 +14,30 @@ generar_informes(){
         echo  "$1" >> $archivo_log
         echo ""  >> $archivo_log
     }
-
+    
     #Luego, Obtenemos los datos de uso de la CPU
     agregar_archivo_al_log "Uso de CPU:"
     top -b -n 1 | grep "Cpu(s)" >> "$archivo_log"
-
+    
     #Tambien, obtenemos datos de uso de la Memoria
     agregar_archivo_al_log "Uso de Memoria:"
     free -h >> "$archivo_log"
-
+    
     #Y por ultimo, obtenemos datos de uso del Disco
     agregar_archivo_al_log "Uso de Disco:"
     df -h >> "$archivo_log"
-
+    echo "----------------------------------------------------------------------"
     #Enviamos mensaje de confirmación de informes hechos.
-    echo "Informes generados y guardados exitosamente en \"$archivo_log\"."
-    echo "--------------------------------------------------------------"
-    echo "Para poder ver el listado de informe, por favor, ingrese lo siguiente:"
+    echo "Informes generados y guardados en \"$archivo_log\"."
+    echo "----------------------------------------------------------------------"
+    echo "_El informe es el siguiente:"
+    echo "----------------------------------------------------------------------"
+    cat "$archivo_log"
+    echo "----------------------------------------------------------------------"
+    echo "Para poder ver el listado de informes, ingrese lo siguiente:"
     echo "'ls -l informes_*.log'"
-    echo "--------------------------------------------------------------"
-    echo "Si desea ver el informe generado, escriba lo siguiente:"
+    echo "----------------------------------------------------------------------"
+    echo "Si desea ver el informe de nuevo, escriba lo siguiente:"
     echo "'cat\"$archivo_log\"'"
 }
 
