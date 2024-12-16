@@ -35,7 +35,7 @@ generar_informes(){
     df -h >> "$archivo_log"
     echo "----------------------------------------------------------------------"
     #Enviamos mensaje de confirmación de informes hechos.
-    echo "Informes generados y guardados en \"$archivo_log\"."
+    echo -e "${GREEN}Informes generados y guardados en \"$archivo_log\".${NC}"
     echo "----------------------------------------------------------------------"
     #una vez generado el informe, preguntamos al usuario si desea ver el mismo
     read -p "¿Desea ver el informe generado? (s/n):"  respuesta
@@ -46,7 +46,7 @@ generar_informes(){
         cat "$archivo_log"
     else 
         #Si la respuesta es 'n', avisamos que se guardó el informe y cerramos el script
-        echo  "El informe se ha guardado en \"$archivo_log\"."
+        echo -e "${GREEN}El informe se ha guardado en \"$archivo_log\".${NC}"
     fi
 }
 
@@ -58,7 +58,7 @@ limpiar_cache_y_archivos_tmp(){
 
     #En el primer paso de procede a eliminar los archivos temporales del sistema
     if sudo rm -rf /tmp/*; then
-        echo "Los archivos temporales en /tem/ han sido eliminados."
+        echo -e "${GREEN}Los archivos temporales en /tem/ han sido eliminados.${NC}"
     else
         echo -e "${RED}No hay archivos temporales en /tmp/${NC}"
     fi
@@ -66,22 +66,22 @@ limpiar_cache_y_archivos_tmp(){
 
     #lo siguiente es realizar la limpieza de los archivos caché del sistema 
     if sudo apt-get clean; then
-        echo "Los archivos caché APT del sistema, han sido elimidados."
+        echo -e "${GREEN}Los archivos caché APT del sistema, han sido elimidados.${NC}"
     else 
         echo -e "${RED}No hay archivos caché APT en el sistema.${NC}"
     fi
 
     #Luego, procedemos a la lmpieza de los navegadores
-    echo "Empezando limpieza de navegadores..."
+    echo -e "${YELLOW}Empezando limpieza de navegadores...${NC}"
 
 
     limpiar_navegadores(){
         navegador=$1
         ruta_cache=$2
-        echo "limpiando navegador $navegador..."
+        echo -e "${GREEN}limpiando navegador $navegador...${NC}"
         if [ -d "$ruta_cache" ]; then
             rm -rf "$ruta_cache"
-            echo "Caché del navegador $navegador eliminado."
+            echo -e "${GREEN}Caché del navegador $navegador eliminado.${NC}"
         else 
             echo -e "${RED}No se encontraron archivos caché del navegador $navegador.${NC}"
         fi
@@ -104,13 +104,13 @@ actualizar_sistema(){
 
     #Verificamos si hay actualizaciones disponibles
     if apt list --upgradable 2>/dev/null | grep  -q "upgradable"; then
-        echo "Actualizaciones disponibles, procediendo a instalarlas..."    
+        echo -e "${YELLOW}Actualizaciones disponibles, procediendo a instalarlas...${NC}"    
 
         #Instalamos y registramos los cambios
         sudo apt-get dist-upgrade -y >> "$LOG_FILE" 2>&1
 
         #Registramos la fecha de actualización
-        echo "Actualización realizada con éxito el día: $(date)" >> "$LOG_FILE"
+        echo -e "${GREEN}Actualización realizada con éxito el día: $(date)" >> "$LOG_FILE.${NC}"
         echo "---------------------------------------------------" >> "$LOG_FILE"
         else 
             echo -e "${RED}No hay actualizaciones disponibles.${NC}"
@@ -121,7 +121,7 @@ actualizar_sistema(){
 while true; do
     echo "-------------------------------------------------------------------------"
     echo -e "${CYAN}===>Bienvenido al menú de opciones<===${NC}"
-    echo "¡A continuación te presentamos las siguienbtes opciones para que puedas!:"
+    echo -e "${CYAN}¡A continuación te presentamos las siguientes opciones:!${NC}"
     echo "-------------------------------------------------------------------------"
     echo -e "${YELLOW}1. Generar un informe de uso de CPU, memoria y disco."
     echo "2. Verificar y actualizar en sistema."
