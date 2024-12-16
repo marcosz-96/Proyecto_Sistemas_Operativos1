@@ -47,6 +47,7 @@ generar_informes(){
     else 
         #Si la respuesta es 'n', avisamos que se guardó el informe y cerramos el script
         echo  "El informe se ha guardado en \"$archivo_log\"."
+    fi
 }
 
 #2da Función: Limpiar archivos temporales y caché del sistema
