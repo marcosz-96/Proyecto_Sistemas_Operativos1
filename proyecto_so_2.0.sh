@@ -126,7 +126,7 @@ while true; do
     echo -e "${YELLOW}1. Generar un informe de uso de CPU, memoria y disco."
     echo "2. Verificar y actualizar en sistema."
     echo "3. Realizar una limpieza de archivos temporales y caché."
-    echo "4. Finalizar el programa.${NC}"
+    echo -e "${RED}4. Finalizar el programa.${NC}"
     echo "-------------------------------------------------------------------------"
     read -p "Elija una opción: " opcion
 
