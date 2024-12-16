@@ -1,4 +1,4 @@
-##PD: Para ver informe de agregados, ver README2.
+## **```PD: Para ver informe de agregados, ver README_2.```**
 
 ## Trabajo Final: 
 # <u>Sistemas Operativos</u>
