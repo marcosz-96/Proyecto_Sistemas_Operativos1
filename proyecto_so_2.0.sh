@@ -1,11 +1,13 @@
 #En este proyecto están integradas las mejorías sugeridas en la presentación
 #Definiremos los colores:
-RED  = '\033[91m'
-GREEN = '\033[92m'
-YELLOW = '\033[93m'
-CYAN  = '\033[96m'
-MAGENTA  = '\033[95m'
-NC  = '\033[0m'
+RED='\033[91m'
+GREEN='\033[92m'
+YELLOW='\033[93m'
+CYAN='\033[96m'
+MAGENTA='\033[95m'
+NC='\033[0m'
+
+LOG_FILE="actualizacion_$(date +%Y%m%d_%H%M%S).log"
 
 #Aplicamos los colores a las funciones 
 
@@ -37,9 +39,9 @@ generar_informes(){
     echo "----------------------------------------------------------------------"
     #una vez generado el informe, preguntamos al usuario si desea ver el mismo
     read -p "¿Desea ver el informe generado? (s/n):"  respuesta
-    if [["$respuesta" == "s" || "$respuesta" == "S" ]]; then
+    if [[ "$respuesta" == "s" || "$respuesta" == "S" ]]; then
         #Si la respuesta es 's', mostramos el informe
-    echo  -e "${YELLOW}El informe es: ${NC}"
+    echo -e "${YELLOW}El informe es: ${NC}"
     echo "----------------------------------------------------------------------"
         cat "$archivo_log"
     else 
@@ -50,15 +52,16 @@ generar_informes(){
 #2da Función: Limpiar archivos temporales y caché del sistema
 #Esta función nos permite eliminar archivos temporales del sistema y caché de los navegadores.
 
-limpiar_cache_y_archivos_temp(){
+limpiar_cache_y_archivos_tmp(){
     echo -e "${MAGENTA}Limpiando caché y archivos temporales...${NC}"
 
     #En el primer paso de procede a eliminar los archivos temporales del sistema
-    if sudo rm -rf /tem/*; then
+    if sudo rm -rf /tmp/*; then
         echo "Los archivos temporales en /tem/ han sido eliminados."
     else
-        echo -e "${RED}No hay archivos temporales en /tem/${NC}"
+        echo -e "${RED}No hay archivos temporales en /tmp/${NC}"
     fi
+
 
     #lo siguiente es realizar la limpieza de los archivos caché del sistema 
     if sudo apt-get clean; then
@@ -68,7 +71,8 @@ limpiar_cache_y_archivos_temp(){
     fi
 
     #Luego, procedemos a la lmpieza de los navegadores
-    echo "Empezando limpieza de navagadores..."
+    echo "Empezando limpieza de navegadores..."
+
 
     limpiar_navegadores(){
         navegador=$1
@@ -78,19 +82,20 @@ limpiar_cache_y_archivos_temp(){
             rm -rf "$ruta_cache"
             echo "Caché del navegador $navegador eliminado."
         else 
-            echo "No se encontraron archivos caché del navegador $navegador."
+            echo -e "${RED}No se encontraron archivos caché del navegador $navegador.${NC}"
         fi
     }
 
 limpiar_navegadores "FireFox" "$HOME/.cache/mozilla/firefox"
 limpiar_navegadores "Google Chrome" "$HOME/.cache/google-chrome"
-echo "Limpieza completada con éxito."
+echo -e "${GREEN}Limpieza completada con éxito.${NC}"
+
 }
 
 #3ra Función: Actualización e instalación de paquetes
 #Esta funcion nos permite verificar si hay actualizaciones disponibles y proceder a instalarlas.
 actualizar_sistema(){
-    echo -e  "${CYAN}Verificando actualizaciones disponibles...${NC}"
+    echo -e "${CYAN}Verificando actualizaciones disponibles${NC}"
     echo "..."
 
     #En caso de haber actualizaciones, actualiza la lista de paquetes disponibles
@@ -143,8 +148,3 @@ while true; do
         ;;
     esac
 done
-
-
-
-
-
