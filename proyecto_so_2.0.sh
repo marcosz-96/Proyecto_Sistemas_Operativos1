@@ -124,7 +124,7 @@ while true; do
     echo -e "${CYAN}¡A continuación te presentamos las siguientes opciones:!${NC}"
     echo "-------------------------------------------------------------------------"
     echo -e "${YELLOW}1. Generar un informe de uso de CPU, memoria y disco."
-    echo "2. Verificar y actualizar en sistema."
+    echo "2. Verificar y actualizar el sistema."
     echo "3. Realizar una limpieza de archivos temporales y caché."
     echo -e "${RED}4. Finalizar el programa.${NC}"
     echo "-------------------------------------------------------------------------"
