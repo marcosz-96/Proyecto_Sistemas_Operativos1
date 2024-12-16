@@ -1,3 +1,5 @@
+##PD: Para ver informe de agregados, ver README2.
+
 ## Trabajo Final: 
 # <u>Sistemas Operativos</u>
 
@@ -46,3 +48,4 @@ MIT Licence [2024] [Proyecto Sistemas Operativos]
 
 
 **Integrantes: ```_Llera Tomás, Courel Brian y Gomez Marco._```**
+
